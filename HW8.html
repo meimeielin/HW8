@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        input, button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+
+    <script>
+       
+    function caculate(){
+
+        let num1 = parseFloat(window.prompt("Enter the first number"));
+
+        while(isNaN(num1)){
+
+            alert("Please enter a valid number"); 
+
+            num1 = parseFloat(prompt("Enter the first number")); 
+
+        }
+
+        
+        let num2 = parseFloat(window.prompt("Enter the second number"));
+
+        while(isNaN(num2)){
+
+            alert("Please enter a valid number");
+
+            num2 = parseFloat(prompt("Enter the second number"));
+
+        }
+
+        let operation = window.prompt("Choose an operation (+, -, *, /):");
+
+        while (!["+", "-", "*", "/"].includes(operation)) {
+            alert("Please enter a valid operation (+, -, *, /)");
+            operation = window.prompt("Choose an operation (+, -, *, /):");
+        }
+
+        let result = 0;
+
+        function add(num1, num2){
+            result = num1 + num2;
+        }
+
+        function subtract(num1, num2){
+            result = num1 - num2;
+        }
+
+        function multiply(num1, num2){
+            result = num1 * num2;
+        }
+
+        function divide(num1, num2){
+            if(num2 != 0){
+                result = num1 / num2;
+            }
+            else{
+                result = "unvalid caculation"
+            }
+        }
+
+        switch(operation){
+            case "+": 
+                add(num1, num2);
+                alert("result:" + result);
+                break;
+            case "-": 
+                subtract(num1, num2);
+                alert("result:" + result);
+                break;
+            case "*": 
+                multiply(num1, num2);
+                alert("result:" + result);
+                break;
+            case "/": 
+                divide(num1, num2);
+                alert("result:" + result);
+                break;
+        }
+
+        askForAnotherCalculation();
+
+    }
+
+    function askForAnotherCalculation() {
+        const userInput = prompt("Do you want to perform another calculation? (yes/no)").toLowerCase();
+
+        if (userInput === 'yes') {
+
+            caculate();
+
+        } 
+        else if (userInput !== 'no') {
+
+            alert("Invalid input. Please enter 'yes' or 'no'.");
+            askForAnotherCalculation();
+
+        }
+    }
+
+    caculate();
+
+
+
+        
+    </script>
+</body>
+</html>
